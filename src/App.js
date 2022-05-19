@@ -1,5 +1,5 @@
-import "./App.css";
-import logo from "./logo.png";
+import './App.css';
+import logo from './logo.png';
 
 function App() {
   return (
@@ -13,11 +13,7 @@ function App() {
           Get started by editing <code>src/App.js</code>
         </p>
         <div className="links">
-          <a
-            href="https://mockbee.netlify.app/"
-            target="_blank"
-            rel="noreferrer"
-          >
+          <a href="https://mockbee.netlify.app/" target="_blank" rel="noreferrer">
             Explore mockBee
           </a>
           <a
@@ -27,11 +23,7 @@ function App() {
           >
             API Documentation
           </a>
-          <a
-            href="https://github.com/neogcamp/mockBee"
-            target="_blank"
-            rel="noreferrer"
-          >
+          <a href="https://github.com/neogcamp/mockBee" target="_blank" rel="noreferrer">
             Contribute
           </a>
         </div>
