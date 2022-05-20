@@ -60,3 +60,9 @@ a:-webkit-any-link {
     scrollbar-width: thin;
   }
 }
+
+/* Auth Pages */
+.auth-section {
+  width: 100%;
+  max-width: 25rem;
+}
