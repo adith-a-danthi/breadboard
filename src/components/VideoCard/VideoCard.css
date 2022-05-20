@@ -1,0 +1,40 @@
+.video-card {
+  display: flex;
+  flex-direction: column;
+  min-width: 25rem;
+  width: 30rem;
+  border: 2px solid var(--color-gray);
+  cursor: pointer;
+}
+
+.video-card .card-title {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.card.outlined-card.video-card:hover {
+  transform: scale(1.02);
+  border-style: dashed;
+}
+
+.action-btn {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  border: none;
+  background-color: rgba(0, 0, 0, 0.6);
+  color: var(--color-white);
+  font-size: larger;
+  transition: all 0.2s ease-in-out;
+  visibility: hidden;
+  cursor: pointer;
+}
+
+.action-btn:hover {
+  background-color: var(--color-gray);
+}
+
+.video-card:hover .action-btn {
+  visibility: visible;
+}

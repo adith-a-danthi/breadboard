@@ -1,0 +1,29 @@
+.card-container {
+  display: block;
+  position: relative;
+  width: 100%;
+}
+
+.card-container .card-content {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  height: 100%;
+  padding: 2rem;
+  padding-top: 4rem;
+  border: 2px solid var(--color-gray);
+  background-color: var(--color-white);
+  cursor: pointer;
+}
+
+.card-container .card-bg {
+  position: absolute;
+  inset: 0;
+  background-color: var(--color-secondary-dark);
+  border: 2px dashed var(--color-gray);
+}
+
+.card-container:hover .card-content {
+  transform: translate(-1rem, -1rem);
+}

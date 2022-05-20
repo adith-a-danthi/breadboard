@@ -1,7 +1,13 @@
+import { Route, Routes } from 'react-router-dom';
+import { Home, Page404 } from './views';
+
 function App() {
   return (
     <div className="App">
-      <h1>Breadboard</h1>
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="*" element={<Page404 />} />
+      </Routes>
     </div>
   );
 }
