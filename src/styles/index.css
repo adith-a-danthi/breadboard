@@ -34,3 +34,29 @@ a:-webkit-any-link {
 .card.outlined-card {
   border: 2px solid var(--color-gray);
 }
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 0.5rem;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--color-secondary-dark);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--color-gray);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-gray-light);
+}
+
+/* Scrollbar styles for Firefox */
+@supports (scrollbar-color: black white) {
+  * {
+    scrollbar-color: var(--color-gray) var(--color-secondary);
+    scrollbar-width: thin;
+  }
+}
