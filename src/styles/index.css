@@ -1,1 +1,36 @@
 @import url('./_reset.css');
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@200;300;400;500;600;700&display=swap');
+
+* {
+  font-family: 'Outfit', 'Red Hat Display', sans-serif;
+}
+
+/* Overrides */
+.btn {
+  transition: all 0.1s ease-in-out;
+}
+
+.btn-gray:hover {
+  outline: 2px solid var(--color-gray);
+  background-color: var(--color-gray);
+  outline-offset: 2px;
+}
+
+hr {
+  height: 2px;
+  background-color: var(--color-gray);
+}
+
+a:any-link,
+a:-webkit-any-link {
+  text-decoration: none;
+  color: inherit;
+}
+
+.input {
+  border-radius: 0;
+}
+
+.card.outlined-card {
+  border: 2px solid var(--color-gray);
+}
