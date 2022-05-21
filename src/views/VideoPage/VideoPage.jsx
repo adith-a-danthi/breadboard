@@ -5,6 +5,10 @@ import { useEffect } from 'react';
 import { Navbar, VideoCard } from '../../components';
 import { useVideos } from '../../contexts/videos-context';
 import { useAuth } from '../../contexts/auth-context';
+import { addLikedVideo } from '../../utils/likedVideos-utils';
+import { useUser } from '../../contexts/user-context';
+import { addVideoToWatchLater } from '../../utils/watchLater-utils';
+import { addVideoToHistory } from '../../utils/history-utils';
 
 export default function VideoPage() {
   // Hooks
@@ -14,6 +18,7 @@ export default function VideoPage() {
     authState: { isAuthenticated },
   } = useAuth();
   const navigate = useNavigate();
+  const { dispatchUserData } = useUser();
 
   // Data
   const video = videos.find((video) => video._id === videoId);
@@ -23,10 +28,21 @@ export default function VideoPage() {
 
   useEffect(() => {
     video ?? navigate('/404');
+    addVideoToHistory(dispatchUserData, video);
   }, []);
 
-  const clickHandler = () => {
+  const navigationGuard = () => {
     !isAuthenticated && navigate('/login');
+  };
+
+  const handleLike = () => {
+    navigationGuard();
+    addLikedVideo(dispatchUserData, video);
+  };
+
+  const handleWatchLater = () => {
+    navigationGuard();
+    addVideoToWatchLater(dispatchUserData, video);
   };
 
   return (
@@ -52,15 +68,15 @@ export default function VideoPage() {
             <section className="video-details">
               {/* Actions */}
               <div className="flex gap-1 justify-end">
-                <button className="btn btn-gray outlined small" onClick={() => clickHandler()}>
+                <button className="btn btn-gray outlined small" onClick={() => handleLike()}>
                   <i className="fas fa-thumbs-up mr-2"></i>
                   Like
                 </button>
-                <button className="btn btn-gray outlined small" onClick={() => clickHandler()}>
+                <button className="btn btn-gray outlined small" onClick={() => handleWatchLater()}>
                   <i className="fas fa-hourglass mr-2"></i>
                   Watch Later
                 </button>
-                <button className="btn btn-gray outlined small" onClick={() => clickHandler()}>
+                <button className="btn btn-gray outlined small" onClick={() => navigationGuard()}>
                   <i className="fas fa-list-ul mr-2"></i>
                   Add to playlist
                 </button>
