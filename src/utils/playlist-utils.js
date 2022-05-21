@@ -42,7 +42,7 @@ const addVideoToPlaylist = async (dispatchUserData, playlist, video) => {
       { video },
       { headers: { authorization: localStorage.getItem('token') } }
     );
-    dispatchUserData({ type: 'PLAYLISTS', payload: response.data.playlists });
+    dispatchUserData({ type: 'UPDATE_PLAYLIST', payload: response.data.playlist });
   } catch (error) {
     console.log(error);
   }
@@ -53,7 +53,7 @@ const removeVideoFromPlaylist = async (dispatchUserData, playlist, video) => {
     const response = await axios.delete(`/api/user/playlists/${playlist._id}/${video._id}`, {
       headers: { authorization: localStorage.getItem('token') },
     });
-    dispatchUserData({ type: 'PLAYLISTS', payload: response.data.playlists });
+    dispatchUserData({ type: 'UPDATE_PLAYLIST', payload: response.data.playlist });
   } catch (error) {
     console.log(error);
   }
@@ -64,7 +64,7 @@ const getPlaylist = async (dispatchUserData, playlist) => {
     const response = await axios.get(`/api/user/playlists/${playlist._id}`, {
       headers: { authorization: localStorage.getItem('token') },
     });
-    dispatchUserData({ type: 'PLAYLISTS', payload: response.data.playlists });
+    return response.data.playlist;
   } catch (error) {
     console.log(error);
   }

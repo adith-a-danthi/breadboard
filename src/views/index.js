@@ -7,3 +7,4 @@ export { default as VideoPage } from './VideoPage/VideoPage';
 export { default as LikedVideos } from './LikedVideos';
 export { default as WatchHistory } from './WatchHistory';
 export { default as WatchLater } from './WatchLater';
+export { default as PlaylistPage } from './PlaylistPage';

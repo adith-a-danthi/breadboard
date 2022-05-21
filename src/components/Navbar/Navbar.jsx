@@ -24,6 +24,9 @@ export default function Navbar({ showNavLinks = false }) {
 
           {isAuthenticated ? (
             <ul className={`nav-link-section ${isOpen ? 'active' : ''} pl-0`}>
+              <Link to="/playlists">
+                <li className="nav-link">Playlists</li>
+              </Link>
               <Link to="/liked-videos">
                 <li className="nav-link">Liked Videos</li>
               </Link>
