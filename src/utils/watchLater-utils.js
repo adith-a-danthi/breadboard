@@ -2,10 +2,10 @@ import axios from 'axios';
 
 const getWatchLater = async (dispatchUserData) => {
   try {
-    const response = await axios.get('/api/user/watchLater', {
+    const response = await axios.get('/api/user/watchlater', {
       headers: { authorization: localStorage.getItem('token') },
     });
-    dispatchUserData({ type: 'WATCH_LATER', payload: response.data.watchLater });
+    dispatchUserData({ type: 'WATCH_LATER', payload: response.data.watchlater });
   } catch (error) {
     console.log(error);
   }
@@ -14,11 +14,11 @@ const getWatchLater = async (dispatchUserData) => {
 const addVideoToWatchLater = async (dispatchUserData, video) => {
   try {
     const response = await axios.post(
-      '/api/user/watchLater',
+      '/api/user/watchlater',
       { video },
       { headers: { authorization: localStorage.getItem('token') } }
     );
-    dispatchUserData({ type: 'WATCH_LATER', payload: response.data.watchLater });
+    dispatchUserData({ type: 'WATCH_LATER', payload: response.data.watchlater });
   } catch (error) {
     console.log(error);
   }
@@ -26,10 +26,10 @@ const addVideoToWatchLater = async (dispatchUserData, video) => {
 
 const removeVideoFromWatchLater = async (dispatchUserData, video) => {
   try {
-    const response = await axios.delete(`/api/user/watchLater/${video._id}`, {
+    const response = await axios.delete(`/api/user/watchlater/${video._id}`, {
       headers: { authorization: localStorage.getItem('token') },
     });
-    dispatchUserData({ type: 'WATCH_LATER', payload: response.data.watchLater });
+    dispatchUserData({ type: 'WATCH_LATER', payload: response.data.watchlater });
   } catch (error) {
     console.log(error);
   }
