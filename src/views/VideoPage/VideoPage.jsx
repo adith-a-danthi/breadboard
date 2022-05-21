@@ -30,7 +30,7 @@ export default function VideoPage() {
 
   useEffect(() => {
     video ?? navigate('/404');
-    addVideoToHistory(dispatchUserData, video);
+    isAuthenticated && addVideoToHistory(dispatchUserData, video);
   }, []);
 
   const navigationGuard = () => {
