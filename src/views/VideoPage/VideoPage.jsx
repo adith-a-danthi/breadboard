@@ -1,8 +1,8 @@
 import './VideoPage.css';
 
 import { Link, useNavigate, useParams } from 'react-router-dom';
-import { useEffect } from 'react';
-import { Navbar, VideoCard } from '../../components';
+import { useEffect, useState } from 'react';
+import { Navbar, VideoCard, PlaylistModal } from '../../components';
 import { useVideos } from '../../contexts/videos-context';
 import { useAuth } from '../../contexts/auth-context';
 import { addLikedVideo } from '../../utils/likedVideos-utils';
@@ -19,6 +19,8 @@ export default function VideoPage() {
   } = useAuth();
   const navigate = useNavigate();
   const { dispatchUserData } = useUser();
+
+  const [showModal, setShowModal] = useState(false);
 
   // Data
   const video = videos.find((video) => video._id === videoId);
@@ -43,6 +45,10 @@ export default function VideoPage() {
   const handleWatchLater = () => {
     navigationGuard();
     addVideoToWatchLater(dispatchUserData, video);
+  };
+
+  const handlePlaylistModal = () => {
+    isAuthenticated ? setShowModal(true) : navigate('/login');
   };
 
   return (
@@ -76,7 +82,10 @@ export default function VideoPage() {
                   <i className="fas fa-hourglass mr-2"></i>
                   Watch Later
                 </button>
-                <button className="btn btn-gray outlined small" onClick={() => navigationGuard()}>
+                <button
+                  className="btn btn-gray outlined small"
+                  onClick={() => handlePlaylistModal()}
+                >
                   <i className="fas fa-list-ul mr-2"></i>
                   Add to playlist
                 </button>
@@ -101,6 +110,8 @@ export default function VideoPage() {
           </section>
         </div>
       </main>
+
+      <PlaylistModal showModal={showModal} setShowModal={setShowModal} video={video} />
     </div>
   );
 }
