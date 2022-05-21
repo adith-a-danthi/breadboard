@@ -3,7 +3,18 @@ const userDataReducer = (state, action) => {
     case 'PLAYLISTS':
       return {
         ...state,
-        playlist: action.payload,
+        playlists: action.payload,
+      };
+
+    case 'UPDATE_PLAYLIST':
+      return {
+        ...state,
+        playlists: state.playlists.map((playlist) => {
+          if (playlist._id === action.payload._id) {
+            return action.payload;
+          }
+          return playlist;
+        }),
       };
 
     case 'LIKED_VIDEOS':
