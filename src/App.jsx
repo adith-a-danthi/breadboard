@@ -9,6 +9,7 @@ import {
   LikedVideos,
   WatchLater,
   WatchHistory,
+  PlaylistPage,
 } from './views';
 import { HideForAuth, RequiresAuth } from './router';
 
@@ -29,6 +30,7 @@ function App() {
           <Route path="/liked-videos" element={<LikedVideos />} />
           <Route path="/history" element={<WatchHistory />} />
           <Route path="/watch-later" element={<WatchLater />} />
+          <Route path="/playlists" element={<PlaylistPage />} />
         </Route>
         <Route path="*" element={<Page404 />} />
       </Routes>
