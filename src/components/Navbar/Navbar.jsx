@@ -23,9 +23,20 @@ export default function Navbar({ showNavLinks = false }) {
           </div>
 
           {isAuthenticated ? (
-            <span className="nav-link" onClick={() => logout()}>
-              Logout
-            </span>
+            <ul className={`nav-link-section ${isOpen ? 'active' : ''} pl-0`}>
+              <Link to="/liked-videos">
+                <li className="nav-link">Liked Videos</li>
+              </Link>
+              <Link to="/watch-later">
+                <li className="nav-link">Watch Later</li>
+              </Link>
+              <Link to="/history">
+                <li className="nav-link">History</li>
+              </Link>
+              <span className="nav-link" onClick={() => logout()}>
+                Logout
+              </span>
+            </ul>
           ) : (
             <ul className={`nav-link-section ${isOpen ? 'active' : ''} pl-0`}>
               <Link to="/register">
