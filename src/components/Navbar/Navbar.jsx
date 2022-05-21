@@ -1,9 +1,14 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
+import { useAuth } from '../../contexts/auth-context';
 import './Navbar.css';
 
 export default function Navbar({ showNavLinks = false }) {
   const [isOpen, setIsOpen] = useState(false);
+  const {
+    authState: { isAuthenticated },
+    logout,
+  } = useAuth();
 
   return (
     <nav className="navbar flat">
@@ -17,10 +22,20 @@ export default function Navbar({ showNavLinks = false }) {
             <span className={`${isOpen ? 'fas fa-xmark' : 'fas fa-bars'}`}></span>
           </div>
 
-          <ul className={`nav-link-section ${isOpen ? 'active' : ''} pl-0`}>
-            <li className="nav-link">Sign Up</li>
-            <li className="nav-link">Login</li>
-          </ul>
+          {isAuthenticated ? (
+            <span className="nav-link" onClick={() => logout()}>
+              Logout
+            </span>
+          ) : (
+            <ul className={`nav-link-section ${isOpen ? 'active' : ''} pl-0`}>
+              <Link to="/register">
+                <li className="nav-link">Sign Up</li>
+              </Link>
+              <Link to="/login">
+                <li className="nav-link">Login</li>
+              </Link>
+            </ul>
+          )}
         </>
       )}
     </nav>
