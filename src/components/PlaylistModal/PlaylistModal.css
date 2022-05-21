@@ -1,0 +1,17 @@
+.bg-overlay {
+  position: fixed;
+  inset: 0;
+  background-color: rgba(0, 0, 0, 0.1);
+  filter: blur(4px);
+  backdrop-filter: blur(4px);
+  z-index: 2;
+}
+.custom-modal {
+  position: absolute;
+  inset: 50%;
+  transform: translate(-50%, -50%);
+  border: 2px solid var(--color-gray);
+  padding: 2rem;
+  max-width: 25rem;
+  z-index: 3;
+}
