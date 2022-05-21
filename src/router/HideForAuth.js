@@ -4,5 +4,5 @@ import { Navigate, Outlet } from 'react-router-dom';
 export const HideForAuth = () => {
   const { authState } = useAuth();
 
-  return authState.isAuthenticated ? <Navigate to="/products" replace /> : <Outlet />;
+  return authState.isAuthenticated ? <Navigate to="/videos" replace /> : <Outlet />;
 };

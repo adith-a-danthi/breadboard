@@ -12,7 +12,7 @@ export default function Home() {
           <h1 className="heading-1">Breadboard</h1>
           <h3 className="text-xl">Never get board of tech!</h3>
 
-          <Link to="/">
+          <Link to="/videos">
             <button className="btn btn-gray mt-4">View All Videos</button>
           </Link>
         </section>
