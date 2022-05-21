@@ -1,7 +1,16 @@
 import { Route, Routes } from 'react-router-dom';
-import { Home, Page404, Login, Register, Videos } from './views';
-import { HideForAuth } from './router';
-import VideoPage from './views/VideoPage/VideoPage';
+import {
+  Home,
+  Page404,
+  Login,
+  Register,
+  Videos,
+  VideoPage,
+  LikedVideos,
+  WatchLater,
+  WatchHistory,
+} from './views';
+import { HideForAuth, RequiresAuth } from './router';
 
 function App() {
   return (
@@ -10,9 +19,16 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/videos" element={<Videos />} />
         <Route path="/videos/:videoId" element={<VideoPage />} />
+
         <Route element={<HideForAuth />}>
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
+        </Route>
+
+        <Route element={<RequiresAuth />}>
+          <Route path="/liked-videos" element={<LikedVideos />} />
+          <Route path="/history" element={<WatchHistory />} />
+          <Route path="/watch-later" element={<WatchLater />} />
         </Route>
         <Route path="*" element={<Page404 />} />
       </Routes>

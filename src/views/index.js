@@ -3,3 +3,7 @@ export { default as Login } from './Login';
 export { default as Register } from './Register';
 export { default as Page404 } from './Page404';
 export { default as Videos } from './Videos/Videos';
+export { default as VideoPage } from './VideoPage/VideoPage';
+export { default as LikedVideos } from './LikedVideos';
+export { default as WatchHistory } from './WatchHistory';
+export { default as WatchLater } from './WatchLater';
