@@ -1,0 +1,43 @@
+.chip {
+  display: block;
+  position: relative;
+  width: fit-content;
+}
+
+.chip .chip-bg {
+  position: absolute;
+  inset: 0;
+  border: 2px dashed var(--color-gray);
+}
+
+.chip-content {
+  position: relative;
+  border: 2px solid var(--color-gray);
+  background-color: var(--color-white);
+  padding: 0.5rem 1rem;
+}
+
+.chip-content input[type='radio'] {
+  display: none;
+}
+
+.chip:hover .chip-content {
+  transform: translate(-0.5rem, -0.5rem);
+}
+
+.chip.active .chip-content {
+  background-color: var(--color-gray);
+  color: var(--color-white);
+  transform: translate(-0.5rem, -0.5rem);
+}
+
+.chip.active:hover .chip-content {
+  transform: translate(0, 0);
+}
+
+@media screen and (max-width: 768px) {
+  .chip-content {
+    padding: 0.25rem 0.5rem;
+    font-size: 0.75rem;
+  }
+}
