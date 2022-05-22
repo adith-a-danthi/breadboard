@@ -23,7 +23,7 @@ const UserProvider = ({ children }) => {
       getWatchLater(dispatchUserData);
       getPlaylists(dispatchUserData);
     }
-  }, []);
+  }, [isAuthenticated]);
 
   return (
     <userContext.Provider value={{ userData, dispatchUserData }}>{children}</userContext.Provider>
