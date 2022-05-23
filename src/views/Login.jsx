@@ -37,6 +37,14 @@ export default function Login() {
     }
   };
 
+  const guestLoginHandler = (e) => {
+    e.preventDefault();
+    setFormData({
+      email: 'guest@breadboard.com',
+      password: 'password',
+    });
+  };
+
   return (
     <main className="grid place-items-center py-8">
       <section className="auth-section">
@@ -83,6 +91,9 @@ export default function Login() {
 
               <button className="btn btn-gray" onClick={loginHandler}>
                 Login
+              </button>
+              <button className="btn btn-gray mt-2" onClick={guestLoginHandler}>
+                Use Guest Credentials
               </button>
 
               <Link to="/register" className="text-center">

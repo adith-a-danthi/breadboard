@@ -30,7 +30,13 @@ const VideosProvider = ({ children }) => {
     getAllCategories();
   }, []);
 
-  return <videosContext.Provider value={{ videos, categories }}>{children}</videosContext.Provider>;
+  const topVideos = videos.filter((ele) => ele?.topVideos);
+
+  return (
+    <videosContext.Provider value={{ videos, categories, topVideos }}>
+      {children}
+    </videosContext.Provider>
+  );
 };
 
 const useVideos = () => useContext(videosContext);

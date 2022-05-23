@@ -5,9 +5,9 @@ import { useEffect, useState } from 'react';
 import { Navbar, VideoCard, PlaylistModal } from '../../components';
 import { useVideos } from '../../contexts/videos-context';
 import { useAuth } from '../../contexts/auth-context';
-import { addLikedVideo } from '../../utils/likedVideos-utils';
+import { addLikedVideo, removeLikedVideo } from '../../utils/likedVideos-utils';
 import { useUser } from '../../contexts/user-context';
-import { addVideoToWatchLater } from '../../utils/watchLater-utils';
+import { addVideoToWatchLater, removeVideoFromWatchLater } from '../../utils/watchLater-utils';
 import { addVideoToHistory } from '../../utils/history-utils';
 
 export default function VideoPage() {
@@ -18,11 +18,15 @@ export default function VideoPage() {
     authState: { isAuthenticated },
   } = useAuth();
   const navigate = useNavigate();
-  const { dispatchUserData } = useUser();
-
+  const { userData, dispatchUserData } = useUser();
   const [showModal, setShowModal] = useState(false);
 
   // Data
+  const { likedVideos, watchLater } = userData;
+
+  const isLiked = likedVideos.some((video) => video._id === videoId);
+  const isWatchLater = watchLater.some((video) => video._id === videoId);
+
   const video = videos.find((video) => video._id === videoId);
   const recommendedVideos = videos.filter(
     (ele) => ele.category === video.category && ele._id !== video._id
@@ -39,12 +43,14 @@ export default function VideoPage() {
 
   const handleLike = () => {
     navigationGuard();
-    addLikedVideo(dispatchUserData, video);
+    isLiked ? removeLikedVideo(dispatchUserData, video) : addLikedVideo(dispatchUserData, video);
   };
 
   const handleWatchLater = () => {
     navigationGuard();
-    addVideoToWatchLater(dispatchUserData, video);
+    isWatchLater
+      ? removeVideoFromWatchLater(dispatchUserData, video)
+      : addVideoToWatchLater(dispatchUserData, video);
   };
 
   const handlePlaylistModal = () => {
@@ -74,11 +80,17 @@ export default function VideoPage() {
             <section className="video-details">
               {/* Actions */}
               <div className="flex gap-1 justify-end">
-                <button className="btn btn-gray outlined small" onClick={() => handleLike()}>
+                <button
+                  className={'btn btn-gray small' + (isLiked ? '' : ' outlined')}
+                  onClick={() => handleLike()}
+                >
                   <i className="fas fa-thumbs-up mr-2"></i>
                   Like
                 </button>
-                <button className="btn btn-gray outlined small" onClick={() => handleWatchLater()}>
+                <button
+                  className={'btn btn-gray small' + (isWatchLater ? '' : ' outlined')}
+                  onClick={() => handleWatchLater()}
+                >
                   <i className="fas fa-hourglass mr-2"></i>
                   Watch Later
                 </button>
