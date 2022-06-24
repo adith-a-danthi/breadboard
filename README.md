@@ -1,8 +1,24 @@
-## breadboard
+# breadboard
 
-Video Platform for all things tech.
+### Video Platform for all things tech.
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Features
+
+- Watch Videos 
+- Login / Signup
+- Watchlist
+- Watch History
+- Liked Videos
+- Playlists
+
+## Tech Stack and Tools
+- React JS
+- React Router v6
+- React Context API + useReducer
+- Backend setup using MockBee
+- [tidle UI](https://tidle-ui.netlify.app/) CSS library is used for UI elements
+- FontAwesome Icons
+- Netlify for Deployment
 
 ## Available Scripts
 
