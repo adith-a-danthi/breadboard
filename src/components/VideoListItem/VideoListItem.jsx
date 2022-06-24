@@ -2,9 +2,15 @@ import { Link } from 'react-router-dom';
 import { useUser } from '../../contexts/user-context';
 import './VideoListItem.css';
 
-export default function VideoListItem({ video, removeItemHandler }) {
+export default function VideoListItem({ video, playlist = undefined, removeItemHandler }) {
   const { title, thumbnail, creator } = video;
   const { dispatchUserData } = useUser();
+
+  const removeBtnClickHandler = () => {
+    playlist === undefined
+      ? removeItemHandler(dispatchUserData, video)
+      : removeItemHandler(dispatchUserData, playlist, video);
+  };
 
   return (
     <>
@@ -21,7 +27,7 @@ export default function VideoListItem({ video, removeItemHandler }) {
         {/* Action Button */}
         <button
           className="btn btn-gray outlined small align-self-end ma-4"
-          onClick={() => removeItemHandler(dispatchUserData, video)}
+          onClick={() => removeBtnClickHandler()}
         >
           <i className="fas fa-times mr-2"></i>
           Remove

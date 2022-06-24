@@ -28,6 +28,7 @@ export default function PlaylistCard({ playlist }) {
           <VideoListItem
             key={video._id}
             video={video}
+            playlist={playlist}
             removeItemHandler={removeVideoFromPlaylist}
           />
         ))}
