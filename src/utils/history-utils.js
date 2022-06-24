@@ -26,11 +26,9 @@ const addVideoToHistory = async (dispatchUserData, video) => {
 
 const removeVideoFromHistory = async (dispatchUserData, video) => {
   try {
-    const response = await axios.post(
-      '/api/user/history/remove',
-      { video },
-      { headers: { authorization: localStorage.getItem('token') } }
-    );
+    const response = await axios.delete(`/api/user/history/${video._id}`, {
+      headers: { authorization: localStorage.getItem('token') },
+    });
     dispatchUserData({ type: 'HISTORY', payload: response.data.history });
   } catch (error) {
     console.log(error);
