@@ -19,7 +19,7 @@ export default function PlaylistModal({ showModal, setShowModal, createOnly, vid
     if (newPlaylistTitle.length !== 0) {
       createPlaylist(dispatchUserData, { title: newPlaylistTitle, description: '' });
       setNewPlaylistTitle('');
-      setShowModal(false);
+      createOnly && setShowModal(false);
     }
   };
 
